@@ -1,0 +1,11 @@
+{
+  "profiles": {
+    "CorporateCarsharing.Api": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "launchUrl": "swagger",
+      "environmentVariables": {"ASPNETCORE_ENVIRONMENT": "Development"},
+      "applicationUrl": "https://localhost:57000;http://localhost:57001"
+    }
+  }
+}

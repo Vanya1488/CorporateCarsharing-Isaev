@@ -1,0 +1,40 @@
+<Window x:Class="CorporateCarsharing.Client.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="CorporateCarsharing — MVVM-клиент" Height="620" Width="850"
+        MinWidth="720" MinHeight="520" WindowStartupLocation="CenterScreen">
+  <Grid Margin="20">
+    <Grid.RowDefinitions>
+      <RowDefinition Height="Auto"/><RowDefinition Height="Auto"/>
+      <RowDefinition Height="*"/><RowDefinition Height="Auto"/><RowDefinition Height="Auto"/>
+    </Grid.RowDefinitions>
+    <TextBlock Grid.Row="0" Text="Корпоративный каршеринг" FontSize="24" FontWeight="SemiBold" Margin="0,0,0,16"/>
+    <DockPanel Grid.Row="1" Margin="0,0,0,14">
+      <Button Content="Загрузить автомобили" Command="{Binding LoadCommand}" DockPanel.Dock="Right" Padding="14,8" Margin="10,0,0,0" />
+      <TextBox Text="{Binding ApiUrl, UpdateSourceTrigger=PropertyChanged}" Padding="7" VerticalContentAlignment="Center"/>
+    </DockPanel>
+    <GroupBox Grid.Row="2" Header="Автомобили" Padding="8" Margin="0,0,0,12">
+      <DataGrid ItemsSource="{Binding Vehicles}" SelectedItem="{Binding SelectedVehicle}" AutoGenerateColumns="False" IsReadOnly="True" CanUserAddRows="False">
+        <DataGrid.Columns>
+          <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="60"/>
+          <DataGridTextColumn Header="Номер" Binding="{Binding PlateNumber}" Width="140"/>
+          <DataGridTextColumn Header="Модель" Binding="{Binding Model}" Width="*"/>
+          <DataGridTextColumn Header="Статус" Binding="{Binding Status}" Width="140"/>
+        </DataGrid.Columns>
+      </DataGrid>
+    </GroupBox>
+    <GroupBox Grid.Row="3" Header="Бронирование выбранного автомобиля" Padding="10" Margin="0,0,0,10">
+      <Grid>
+        <Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="*"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions>
+        <StackPanel Grid.Column="0" Margin="0,0,10,0">
+          <TextBlock Text="Начало (UTC)"/><TextBox Text="{Binding StartAt, UpdateSourceTrigger=PropertyChanged}" Padding="7"/>
+        </StackPanel>
+        <StackPanel Grid.Column="1" Margin="0,0,10,0">
+          <TextBlock Text="Окончание (UTC)"/><TextBox Text="{Binding EndAt, UpdateSourceTrigger=PropertyChanged}" Padding="7"/>
+        </StackPanel>
+        <Button Grid.Column="2" Content="Забронировать" Command="{Binding BookCommand}" Padding="14,8" VerticalAlignment="Bottom"/>
+      </Grid>
+    </GroupBox>
+    <TextBlock Grid.Row="4" Text="{Binding StatusMessage}" TextWrapping="Wrap" FontSize="13"/>
+  </Grid>
+</Window>
