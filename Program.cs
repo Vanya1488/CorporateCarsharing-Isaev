@@ -60,6 +60,16 @@ app.MapPost("/api/v1/telemetry", (TelemetryInput input, TelemetryMappingService 
 app.MapGet("/api/v1/telemetry", (TelemetryMappingService mapper) => Results.Ok(mapper.GetAll()));
 
 app.MapGet("/health", () => Results.Ok(new { status = "Healthy" }));
+app.MapGet("/api/v1/version", () =>
+    Results.Ok(new
+    {
+        service = "CorporateCarsharing",
+        apiVersion = "1.0",
+        validationEnabled = true
+    }))
+    .WithName("GetApiVersion")
+    .WithTags("System")
+    .Produces(200);
 app.Run();
 
 // Требуется для WebApplicationFactory<Program> в интеграционных тестах.
