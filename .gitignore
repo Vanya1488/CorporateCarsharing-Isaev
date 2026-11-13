@@ -1,0 +1,40 @@
+# Build outputs
+bin/
+obj/
+[Bb]uild/
+[Dd]ebug/
+[Rr]elease/
+
+# Visual Studio / IDE
+.vs/
+.idea/
+.vscode/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Test / coverage artifacts
+TestResults/
+coverage/
+*.coverage
+*.coveragexml
+
+# Local secrets and machine-specific configuration
+.env
+.env.*
+!.env.example
+**/appsettings.Development.json
+**/secrets.json
+*.pfx
+*.p12
+*.pem
+*.key
+
+# Packages and temporary files
+*.nupkg
+*.snupkg
+*.log
+*.tmp
+.DS_Store
+Thumbs.db
